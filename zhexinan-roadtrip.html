@@ -1,0 +1,1415 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2026 五一浙西南山野自驾</title>
+  <style>
+    :root {
+      --paper: #f4f0e7;
+      --paper-soft: #fbf8f0;
+      --ink: #1f4a3a;
+      --ink-deep: #153228;
+      --muted: #6f776b;
+      --line: #d9d0bf;
+      --gold: #c58a32;
+      --gold-soft: #efe1c5;
+      --clay: #b76542;
+      --moss: #758c5e;
+      --water: #537f8a;
+      --white: rgba(255, 255, 255, 0.72);
+      --shadow: 0 20px 60px rgba(36, 45, 33, 0.12);
+      color-scheme: light;
+      font-family: "Songti SC", "STSong", "Noto Serif CJK SC", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink-deep);
+      background:
+        radial-gradient(circle at 18% 12%, rgba(197, 138, 50, 0.14), transparent 28rem),
+        radial-gradient(circle at 86% 26%, rgba(83, 127, 138, 0.12), transparent 34rem),
+        linear-gradient(120deg, rgba(255,255,255,0.72), rgba(244,240,231,0.88)),
+        var(--paper);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image:
+        linear-gradient(115deg, transparent 0 47%, rgba(31, 74, 58, 0.14) 47.2% 47.6%, transparent 47.8%),
+        linear-gradient(65deg, transparent 0 54%, rgba(197, 138, 50, 0.12) 54.2% 54.5%, transparent 54.7%);
+      background-size: 180px 140px, 210px 160px;
+      mix-blend-mode: multiply;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .page {
+      position: relative;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 54px 0 96px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 28px;
+      min-height: calc(100vh - 96px);
+      align-items: center;
+      padding-bottom: 48px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font: 700 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(44px, 5.6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero-subtitle {
+      max-width: 660px;
+      margin: 24px 0 0;
+      color: #765d41;
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1.5;
+    }
+
+    .route-line {
+      display: block;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      font-size: 0.9em;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #44584d;
+      font-size: 15px;
+    }
+
+    .hero-meta li {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero-meta li::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 99px;
+      background: var(--gold);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .pill-button {
+      min-height: 44px;
+      border: 1px solid rgba(31, 74, 58, 0.22);
+      border-radius: 999px;
+      padding: 10px 18px;
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--ink);
+      box-shadow: 0 8px 24px rgba(31, 74, 58, 0.08);
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .pill-button.primary {
+      background: var(--ink);
+      color: #fff7e8;
+      border-color: var(--ink);
+    }
+
+    .pill-button:hover {
+      transform: translateY(-1px);
+      background: var(--gold-soft);
+      border-color: rgba(197, 138, 50, 0.58);
+    }
+
+    .hero-panel {
+      position: relative;
+      border: 1px solid rgba(31, 74, 58, 0.16);
+      border-radius: 8px;
+      padding: 22px;
+      background: rgba(251, 248, 240, 0.74);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 0 40%, rgba(117, 140, 94, 0.16) 40.4% 41%, transparent 41.4%),
+        linear-gradient(155deg, transparent 0 58%, rgba(83, 127, 138, 0.16) 58.4% 59.1%, transparent 59.5%);
+      pointer-events: none;
+    }
+
+    .hero-panel > * {
+      position: relative;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      min-height: 108px;
+      padding: 18px;
+      border: 1px solid rgba(31, 74, 58, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.64);
+    }
+
+    .stat-value {
+      display: block;
+      color: var(--ink);
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .route-ribbon {
+      margin-top: 18px;
+      padding: 16px;
+      border-left: 3px solid var(--gold);
+      background: rgba(239, 225, 197, 0.54);
+      color: #6f5335;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .section {
+      margin-top: 34px;
+      scroll-margin-top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.1;
+    }
+
+    .section-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mode-switch {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid rgba(31, 74, 58, 0.18);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.58);
+      white-space: nowrap;
+    }
+
+    .mode-switch button {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .mode-switch button.active {
+      background: var(--ink);
+      color: #fff7e8;
+    }
+
+    .route-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .map-card,
+    .day-card,
+    .tool-card {
+      border: 1px solid rgba(31, 74, 58, 0.15);
+      border-radius: 8px;
+      background: rgba(251, 248, 240, 0.76);
+      box-shadow: 0 12px 38px rgba(31, 74, 58, 0.08);
+    }
+
+    .map-card {
+      position: relative;
+      min-height: 560px;
+      overflow: hidden;
+      padding: 18px;
+    }
+
+    .terrain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.56;
+      pointer-events: none;
+    }
+
+    .route-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .route-path {
+      fill: none;
+      stroke: rgba(31, 74, 58, 0.34);
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 8 12;
+    }
+
+    .route-path.active {
+      stroke: var(--gold);
+      stroke-width: 6;
+      stroke-dasharray: none;
+      filter: drop-shadow(0 8px 12px rgba(197, 138, 50, 0.24));
+    }
+
+    .map-title {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .map-title h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 24px;
+    }
+
+    .map-title span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: right;
+    }
+
+    .stop-button {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      z-index: 2;
+      display: grid;
+      gap: 7px;
+      width: min(160px, 28vw);
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--ink-deep);
+      text-align: left;
+      transform: translate(-50%, -50%);
+    }
+
+    .stop-button .dot {
+      width: 22px;
+      height: 22px;
+      border: 5px solid rgba(251, 248, 240, 0.96);
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 5px 18px rgba(31, 74, 58, 0.22);
+      justify-self: center;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+
+    .stop-button .label {
+      justify-self: center;
+      max-width: 150px;
+      border: 1px solid rgba(31, 74, 58, 0.14);
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 8px 22px rgba(31, 74, 58, 0.08);
+      text-align: center;
+      line-height: 1.35;
+      transform: translate(var(--label-x, 0), var(--label-y, 0));
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .stop-button strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .stop-button small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font: 600 11px/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .stop-button.active .dot,
+    .stop-button:hover .dot {
+      background: var(--clay);
+      transform: scale(1.2);
+    }
+
+    .stop-button.active .label,
+    .stop-button:hover .label {
+      border-color: rgba(197, 138, 50, 0.58);
+      background: #fffaf0;
+      transform: translate(var(--label-x, 0), calc(var(--label-y, 0) - 2px));
+    }
+
+    .active-summary {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      display: grid;
+      gap: 10px;
+      border-left: 4px solid var(--gold);
+      border-radius: 8px;
+      padding: 16px;
+      background: rgba(255, 250, 240, 0.88);
+      box-shadow: 0 16px 44px rgba(31, 74, 58, 0.12);
+    }
+
+    .active-summary h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 22px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .summary-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(244, 240, 231, 0.74);
+    }
+
+    .summary-item b,
+    .drive-kpi b {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .summary-item span,
+    .drive-kpi span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 0 0 12px;
+      scrollbar-width: thin;
+    }
+
+    .tab-button {
+      flex: 0 0 auto;
+      border: 1px solid rgba(31, 74, 58, 0.16);
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255, 255, 255, 0.56);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .tab-button.active {
+      background: var(--ink);
+      color: #fff7e8;
+      border-color: var(--ink);
+    }
+
+    .day-card {
+      padding: 18px;
+    }
+
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(31, 74, 58, 0.12);
+    }
+
+    .day-header h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 28px;
+    }
+
+    .day-route {
+      margin: 6px 0 0;
+      color: #765d41;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .day-badge {
+      align-self: start;
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: var(--gold-soft);
+      color: #714d18;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .day-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+    }
+
+    .tag {
+      border: 1px solid rgba(31, 74, 58, 0.15);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.54);
+      color: #496052;
+      font-size: 12px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid rgba(31, 74, 58, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.48);
+    }
+
+    .timeline-row.highlight {
+      border-color: rgba(197, 138, 50, 0.42);
+      background: rgba(239, 225, 197, 0.44);
+    }
+
+    .time {
+      color: var(--gold);
+      font: 800 14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .event-title {
+      margin: 0;
+      color: var(--ink-deep);
+      font-weight: 800;
+    }
+
+    .event-note {
+      margin: 6px 0 0;
+      color: #5f6a60;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .collapse-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .text-button {
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .driving-panel {
+      display: none;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    body.drive-mode .full-panel {
+      display: none;
+    }
+
+    body.drive-mode .driving-panel {
+      display: grid;
+    }
+
+    .drive-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .drive-kpi {
+      padding: 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(31, 74, 58, 0.12);
+    }
+
+    .nav-list,
+    .alert-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav-list li,
+    .alert-list li {
+      padding: 11px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.54);
+      line-height: 1.55;
+    }
+
+    .nav-list li {
+      border-left: 3px solid var(--water);
+    }
+
+    .alert-list li {
+      border-left: 3px solid var(--clay);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .tool-card {
+      padding: 18px;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 24px;
+    }
+
+    .cost-row,
+    .stay-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(31, 74, 58, 0.1);
+      color: #4f5e53;
+    }
+
+    .cost-row:last-child,
+    .stay-row:last-child {
+      border-bottom: 0;
+    }
+
+    .cost-row strong,
+    .stay-row strong {
+      color: var(--ink-deep);
+    }
+
+    .budget-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .budget-toggle button {
+      border: 1px solid rgba(31, 74, 58, 0.16);
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: rgba(255, 255, 255, 0.58);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .budget-toggle button.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fffaf0;
+    }
+
+    .packing-grid {
+      display: grid;
+      gap: 9px;
+    }
+
+    .pack-item {
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 9px;
+      align-items: start;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.48);
+      color: #4f5e53;
+      line-height: 1.45;
+    }
+
+    .pack-item input {
+      accent-color: var(--ink);
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+    }
+
+    .pack-item.done {
+      color: rgba(79, 94, 83, 0.58);
+      text-decoration: line-through;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .tip {
+      min-height: 126px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(31, 74, 58, 0.14);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .tip b {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .tip span {
+      color: #5f6a60;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 14px;
+      z-index: 10;
+      display: none;
+      width: min(560px, calc(100% - 24px));
+      transform: translateX(-50%);
+      border: 1px solid rgba(31, 74, 58, 0.18);
+      border-radius: 999px;
+      padding: 6px;
+      background: rgba(255, 250, 240, 0.92);
+      box-shadow: 0 12px 38px rgba(31, 74, 58, 0.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .bottom-nav a {
+      flex: 1;
+      border-radius: 999px;
+      padding: 8px 6px;
+      color: var(--muted);
+      text-align: center;
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .bottom-nav a.active {
+      background: var(--ink);
+      color: #fff7e8;
+    }
+
+    @media (max-width: 980px) {
+      .page {
+        width: min(100% - 22px, 760px);
+        padding-top: 32px;
+      }
+
+      .hero,
+      .route-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .map-card {
+        min-height: 520px;
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tips-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-bottom: 104px;
+      }
+
+      .section-head,
+      .day-header,
+      .map-title {
+        display: block;
+      }
+
+      .section-head .mode-switch {
+        margin-top: 14px;
+      }
+
+      .hero-panel,
+      .map-card,
+      .day-card,
+      .tool-card {
+        padding: 14px;
+      }
+
+      .stats-grid,
+      .summary-grid,
+      .drive-kpis,
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .map-card {
+        min-height: 620px;
+      }
+
+      .route-line {
+        white-space: normal;
+      }
+
+      .map-title span {
+        display: block;
+        margin-top: 6px;
+        text-align: left;
+      }
+
+      .stop-button {
+        width: 126px;
+      }
+
+      .stop-button .label {
+        padding: 7px 8px;
+      }
+
+      .stop-button strong {
+        font-size: 13px;
+      }
+
+      .active-summary {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin-top: 470px;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .day-badge {
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .bottom-nav {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" id="top">
+      <div>
+        <p class="eyebrow">Zhejiang Mountain Road Trip</p>
+        <h1>浙西南山野自驾<br>4天3夜</h1>
+        <p class="hero-subtitle"><span class="route-line">上海 → 诸暨 → 遂昌 → 龙泉 → 景宁大漈 → 上海</span>提前一晚出城，穿越江南丙察察，走 G235 溪谷和 S328 盘山公路返程。</p>
+        <ul class="hero-meta">
+          <li>2人 · 夫妻出行</li>
+          <li>2026年5月1日—4日</li>
+          <li>山野穿越 · 小众避堵</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="pill-button primary" href="#route">打开交互路书</a>
+          <button class="pill-button" type="button" data-mode-toggle>切换驾驶模式</button>
+          <a class="pill-button" href="#tools">查看费用装备</a>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-label="行程关键数据">
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="route-ribbon">
+          <strong>关键设计：</strong>4月30日晚20:00提前出发住诸暨，5月1日07:00从诸暨出发，避开上海出城高峰。不走回头路，国道风景返程。
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="route">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Route Console</h2>
+          <p class="section-note">点击地图站点或日程标签，路线、当天摘要和时间表会同步切换。</p>
+        </div>
+        <div class="mode-switch" aria-label="视图模式">
+          <button type="button" class="active" data-mode="overview">总览</button>
+          <button type="button" data-mode="drive">驾驶</button>
+        </div>
+      </div>
+
+      <div class="route-shell">
+        <section class="map-card" aria-label="离线路线图">
+          <svg class="terrain" viewBox="0 0 900 620" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M-30 470 C110 380 160 430 280 330 S470 245 580 310 S780 420 930 270" fill="none" stroke="#758c5e" stroke-width="34" stroke-opacity=".16"/>
+            <path d="M-20 560 C130 500 190 520 310 430 S510 370 620 430 S780 530 930 410" fill="none" stroke="#537f8a" stroke-width="18" stroke-opacity=".13"/>
+            <path d="M-20 160 C120 120 210 160 330 92 S560 50 710 120 S830 180 930 118" fill="none" stroke="#c58a32" stroke-width="24" stroke-opacity=".1"/>
+          </svg>
+          <svg class="route-svg" viewBox="0 0 900 620" preserveAspectRatio="none" aria-hidden="true">
+            <path class="route-path" id="fullRoutePath" d=""/>
+            <path class="route-path active" id="activePath" d=""/>
+          </svg>
+          <div class="map-title">
+            <h3>不走回头路</h3>
+            <span>1,050km · 4晚 · SUV最佳<br>按经纬度近似投影</span>
+          </div>
+          <div id="routeStops"></div>
+          <div class="active-summary" id="activeSummary"></div>
+        </section>
+
+        <section>
+          <div class="tabs" id="dayTabs" aria-label="日程切换"></div>
+          <article class="day-card" id="dayCard"></article>
+        </section>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Travel Tools</h2>
+          <p class="section-note">预算、住宿、装备和提醒集中在这里，出发前逐项确认。</p>
+        </div>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card">
+          <h3>费用预估</h3>
+          <div class="budget-toggle" aria-label="预算范围">
+            <button type="button" class="active" data-budget="low">低预算</button>
+            <button type="button" data-budget="high">高预算</button>
+          </div>
+          <div id="costList"></div>
+        </article>
+        <article class="tool-card">
+          <h3>住宿安排</h3>
+          <div id="stayList"></div>
+        </article>
+        <article class="tool-card">
+          <h3>装备清单</h3>
+          <div class="packing-grid" id="packingList"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="tips">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Critical Notes</h2>
+          <p class="section-note">山路、海拔、信号和补给是这条线的核心风险点。</p>
+        </div>
+      </div>
+      <div class="tips-grid" id="tipsGrid"></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="移动端快捷导航">
+    <a href="#top" class="active">首页</a>
+    <a href="#route">路线</a>
+    <a href="#tools">工具</a>
+    <a href="#tips">提醒</a>
+  </nav>
+
+  <script>
+    const overview = {
+      stats: [
+        ["4天", "行程天数"],
+        ["1,050km", "总里程"],
+        ["4晚", "住宿"],
+        ["¥3.5-4.7k", "预估总费用"],
+        ["SUV", "建议车型"]
+      ]
+    };
+
+    const routeStops = [
+      { id: "transition", name: "上海", sub: "4/30 出发", lat: 31.2304, lon: 121.4737, labelX: "-48px", labelY: "12px" },
+      { id: "transition", name: "诸暨", sub: "过渡夜", lat: 29.708692, lon: 120.246863, labelX: "-24px", labelY: "2px" },
+      { id: "day1", name: "遂昌", sub: "江南丙察察", lat: 28.592119, lon: 119.276104, labelX: "-42px", labelY: "8px" },
+      { id: "day2", name: "龙泉", sub: "龙泉山", lat: 28.074623, lon: 119.141461, labelX: "48px", labelY: "-2px" },
+      { id: "day3", name: "景宁大漈", sub: "云中大漈", lat: 27.814, lon: 119.586, labelX: "36px", labelY: "-6px" },
+      { id: "day4", name: "上海", sub: "风景返程", lat: 31.2304, lon: 121.4737, labelX: "42px", labelY: "-22px", returnStop: true }
+    ];
+
+    const days = [
+      {
+        id: "transition",
+        short: "4月30日",
+        title: "4月30日（周四）过渡夜",
+        route: "上海 → 诸暨",
+        badge: "提前出城避堵",
+        distance: "220km",
+        drive: "2.5小时",
+        stay: "络客酒店（诸暨高铁站店）",
+        highlights: ["G60夜间车流少", "避免5月1日上海出城高峰", "早睡养精神"],
+        nav: ["上海", "G60 沪昆高速", "诸暨市区", "络客酒店（诸暨高铁站店）"],
+        alerts: ["4月30日晚高速可能仍收费，上海→诸暨约¥80。", "23:00入住后尽量早睡，Day 1 路况复杂。"],
+        events: [
+          ["20:00", "上海出发", "走 G60 沪昆高速，晚上车流较少。", true],
+          ["22:30", "抵达诸暨市区", "约 220km，2.5小时。", false],
+          ["23:00", "入住络客酒店", "已锁定。早睡，为次日养足精神。", true]
+        ]
+      },
+      {
+        id: "day1",
+        short: "Day 1",
+        title: "Day 1 · 5月1日（周五）",
+        route: "诸暨 → 遂昌（江南丙察察）→ 龙泉",
+        badge: "非铺装精华段",
+        distance: "约430km",
+        drive: "6小时+",
+        stay: "梵若山居",
+        highlights: ["红星坪村进入丙察察", "独山古寨午餐", "S227乌溪江峡谷"],
+        nav: ["诸暨", "金华枢纽", "遂昌出口", "红星坪村", "独山古寨", "焦滩乡", "龙泉市", "梵若山居"],
+        alerts: ["江南丙察察 8km 非铺装碎石路，窄且无护栏。", "车速控制在 15-20km/h，必须天黑前穿出。"],
+        events: [
+          ["07:00", "诸暨出发", "走 G60→金华枢纽→G25长深高速→遂昌出口，约230km，3小时。", true],
+          ["10:00", "抵达遂昌出口", "比从上海出发节省2-3小时拥堵时间。", false],
+          ["10:30", "红星坪村进入江南丙察察", "8km非铺装精华段：碎石路、绝壁、深谷。SUV放心走，轿车谨慎。", true],
+          ["12:00", "穿出丙察察，经姚岭村", "看到观景台就停，控制节奏。", false],
+          ["12:30", "独山古寨 + 焦滩鱼头午餐", "明代古村黄泥墙正午光线极美；两人点中份鱼头即可。", true],
+          ["14:00", "沿 S227 往龙泉", "经王村口、垵口乡，沿乌溪江峡谷行驶约2.5小时。", false],
+          ["16:30", "抵达龙泉，入住梵若山居", "西街街道周村1号，步行5分钟到西街。", true],
+          ["18:00", "龙泉西街漫步 + 晚餐", "安仁鱼头或龙泉粉皮；西街夜景清幽。", false]
+        ]
+      },
+      {
+        id: "day2",
+        short: "Day 2",
+        title: "Day 2 · 5月2日（周六）",
+        route: "龙泉山 + 下樟古村",
+        badge: "低强度山野日",
+        distance: "约120km",
+        drive: "3小时",
+        stay: "森博龙渊驿",
+        highlights: ["猎户山庄轻徒步", "凤阳湖发呆", "下樟古村古樟树"],
+        nav: ["梵若山居", "龙泉山旅游区/猎户山庄", "凤阳湖", "下樟古村", "森博龙渊驿"],
+        alerts: ["龙泉山海拔 1500m+，比市区低 8-10℃。", "景区联票 80元/人；索道和景交方案需现场确认。"],
+        events: [
+          ["08:00", "梵若山居早餐", "建议吃饱；也可提前一晚在西街买面包备用。", false],
+          ["09:00", "出发龙泉山（凤阳山）", "驱车约1.5小时，导航龙泉山旅游区或猎户山庄。", true],
+          ["10:30", "猎户山庄周边轻徒步", "绝壁奇松栈道约1小时 → 凤阳湖发呆40分钟，全程约3小时。", true],
+          ["14:00", "返程下山", "猎户山庄有餐厅，可午餐或下山吃。", false],
+          ["15:30", "下樟古村", "村口瀑布、明清古宅沿溪而建，几乎零商业化。", true],
+          ["17:30", "入住森博龙渊驿", "兰巨乡蜜蜂岭村原林科院内，徽派古建+茶园。", true],
+          ["18:00", "民宿内晚餐", "有全日制餐厅；也可驱车回龙泉市区吃安仁鱼头。", false]
+        ]
+      },
+      {
+        id: "day3",
+        short: "Day 3",
+        title: "Day 3 · 5月3日（周日）",
+        route: "龙泉 → 景宁大漈乡",
+        badge: "云雾古村",
+        distance: "约150km",
+        drive: "2.5小时",
+        stay: "云鹤水岸",
+        highlights: ["畲家午餐", "时思寺", "雪花漈百米瀑布"],
+        nav: ["森博龙渊驿", "景宁县城", "县道盘山公路", "大漈乡", "云鹤水岸"],
+        alerts: ["山区信号弱，提前下载离线地图。", "云中大漈门票 40元/人。"],
+        events: [
+          ["08:00", "森博龙渊驿早餐", "早餐时间 07:00-09:00，单点；建议简单吃或自备干粮。", false],
+          ["08:30", "退房，前往景宁大漈乡", "走高速/省道约2.5小时。龙泉→景宁县城→县道盘山公路。", true],
+          ["11:00", "抵达大漈乡，午餐", "推荐畲家乌米饭、笋干烧肉、高山茭白。", true],
+          ["12:30", "云中大漈景区", "核心：时思寺、1500年柳杉王、雪花漈百米瀑布。", true],
+          ["16:00", "大漈乡古村落闲逛", "海拔1030米，古村、廊桥、梯田散步。", false],
+          ["18:00", "入住云鹤水岸", "已锁定，深山古村体验。", true]
+        ]
+      },
+      {
+        id: "day4",
+        short: "Day 4",
+        title: "Day 4 · 5月4日（周一）",
+        route: "大漈乡 → 上海：风景返程",
+        badge: "溪谷+盘山返程",
+        distance: "约520km",
+        drive: "7小时",
+        stay: "返沪",
+        highlights: ["G235溪谷", "S328盘山", "避开5月5日返程高峰"],
+        nav: ["大漈乡", "G235国道", "景宁", "S328省道", "云和/丽水西", "G25长深高速", "金华", "G60沪昆", "上海"],
+        alerts: ["每1.5小时休息一次，下午到家还能休整。", "风景返程不经过龙泉/遂昌，不走回头路。"],
+        events: [
+          ["08:00", "自然醒，民宿早餐", "清晨时思寺若再去一次，无人清幽。", false],
+          ["09:00-10:30", "G235国道：大漈→景宁", "沿小溪溪谷行驶约1.5小时，溪水清澈，两岸青山。", true],
+          ["10:30-11:30", "S328省道：景宁→云和", "盘山公路约1小时，经茶园和竹林，视野开阔，车极少。", true],
+          ["11:30", "云和县城或丽水西午餐", "补给后再上高速。", false],
+          ["12:30", "丽水西上 G25长深高速", "G25→金华→转G60沪昆→杭州→上海。", true],
+          ["15:30", "金华服务区休息", "全程约3小时高速，建议每1.5小时休息一次。", false],
+          ["17:00", "抵达上海", "避开5月5日返程最高峰。", true]
+        ]
+      }
+    ];
+
+    const stays = [
+      ["4月30日 · 诸暨", "络客酒店（诸暨高铁站店）", "¥200-300 · 已锁定"],
+      ["5月1日 · 龙泉市区", "梵若山居", "¥350-450 · 待预订"],
+      ["5月2日 · 龙泉郊区", "森博龙渊驿", "¥400-600 · 待预订"],
+      ["5月3日 · 景宁大漈", "云鹤水岸", "¥400-600 · 已锁定"]
+    ];
+
+    const costs = [
+      ["高速费", 0, 0, "五一假期高速免费，4月30日晚上海→诸暨约¥80"],
+      ["油费", 800, 950, "按1050km、油耗8L/100km计算"],
+      ["住宿（4晚）", 1350, 1950, "络客+梵若山居+森博龙渊驿+云鹤水岸"],
+      ["门票", 240, 240, "龙泉山联票80×2人 + 云中大漈40×2人"],
+      ["餐饮（4天）", 1000, 1200, "2人农家菜，人均100-120/天"],
+      ["其他", 200, 200, "零食、饮料等"]
+    ];
+
+    const tips = [
+      ["车辆", "SUV最佳；轿车可行但丙察察段需格外谨慎。"],
+      ["丙察察安全", "8km非铺装碎石路，窄且无护栏，15-20km/h。"],
+      ["龙泉山海拔", "1500m+，气温比市区低8-10℃，带防风外套。"],
+      ["大漈乡信号", "山区信号弱，提前下载离线地图。"],
+      ["早餐补给", "森博龙渊驿早餐评价一般，建议备干粮。"]
+    ];
+
+    const packingList = [
+      "防风外套 / 薄羽绒",
+      "舒适长裤、换洗内衣",
+      "防滑运动鞋、备用袜子",
+      "出发前检查刹车和轮胎，建议带备胎",
+      "晕车药、创可贴、肠胃药",
+      "矿泉水、零食、水果",
+      "防晒霜、驱蚊液",
+      "充电宝、离线地图"
+    ];
+
+    let activeDay = "transition";
+    let collapsed = false;
+    let budgetMode = "low";
+
+    const $ = (selector) => document.querySelector(selector);
+    const $$ = (selector) => Array.from(document.querySelectorAll(selector));
+    const getDay = () => days.find((day) => day.id === activeDay) || days[0];
+    const mapBox = { width: 900, height: 620, padX: 138, padTop: 104, padBottom: 260 };
+
+    function projectRouteStops() {
+      const uniquePoints = routeStops.filter((stop, index) => index !== routeStops.length - 1);
+      const lats = uniquePoints.map((stop) => stop.lat);
+      const lons = uniquePoints.map((stop) => stop.lon);
+      const latMin = Math.min(...lats);
+      const latMax = Math.max(...lats);
+      const lonMin = Math.min(...lons);
+      const lonMax = Math.max(...lons);
+
+      return routeStops.map((stop) => {
+        const x = mapBox.padX + ((stop.lon - lonMin) / (lonMax - lonMin)) * (mapBox.width - mapBox.padX * 2);
+        const y = mapBox.padTop + ((latMax - stop.lat) / (latMax - latMin)) * (mapBox.height - mapBox.padTop - mapBox.padBottom);
+        return {
+          ...stop,
+          px: x,
+          py: y,
+          x: `${(x / mapBox.width) * 100}%`,
+          y: `${(y / mapBox.height) * 100}%`
+        };
+      });
+    }
+
+    function routePath(points) {
+      return points.map((point, index) => `${index === 0 ? "M" : "L"}${point.px.toFixed(1)} ${point.py.toFixed(1)}`).join(" ");
+    }
+
+    function segmentPath(points, dayId) {
+      const dayIndex = days.findIndex((day) => day.id === dayId);
+      if (dayId === "transition") return routePath(points.slice(0, 2));
+      if (dayId === "day4") return routePath([points[4], points[5]]);
+      return routePath(points.slice(dayIndex, dayIndex + 2));
+    }
+
+    const projectedStops = projectRouteStops();
+
+    function renderStats() {
+      $("#statsGrid").innerHTML = overview.stats.map(([value, label]) => `
+        <div class="stat-card">
+          <span class="stat-value">${value}</span>
+          <span class="stat-label">${label}</span>
+        </div>
+      `).join("");
+    }
+
+    function renderRouteStops() {
+      $("#routeStops").innerHTML = projectedStops.map((stop) => `
+        <button class="stop-button ${stop.id === activeDay ? "active" : ""} ${stop.returnStop ? "is-return" : ""}" type="button" data-stop="${stop.id}" style="--x:${stop.x};--y:${stop.y};--label-x:${stop.labelX};--label-y:${stop.labelY}" aria-label="切换到${stop.name}">
+          <span class="dot"></span>
+          <span class="label"><strong>${stop.name}</strong><small>${stop.sub}</small></span>
+        </button>
+      `).join("");
+      $$(".stop-button").forEach((button) => {
+        button.addEventListener("click", () => setActiveDay(button.dataset.stop));
+      });
+    }
+
+    function renderTabs() {
+      $("#dayTabs").innerHTML = days.map((day) => `
+        <button class="tab-button ${day.id === activeDay ? "active" : ""}" type="button" data-day="${day.id}">${day.short}</button>
+      `).join("");
+      $$(".tab-button").forEach((button) => {
+        button.addEventListener("click", () => setActiveDay(button.dataset.day));
+      });
+    }
+
+    function renderActiveSummary() {
+      const day = getDay();
+      $("#activeSummary").innerHTML = `
+        <h3>${day.title}</h3>
+        <div class="summary-grid">
+          <div class="summary-item"><b>${day.distance}</b><span>预计里程</span></div>
+          <div class="summary-item"><b>${day.drive}</b><span>驾驶时间</span></div>
+          <div class="summary-item"><b>${day.stay}</b><span>住宿/归宿</span></div>
+        </div>
+      `;
+      $("#fullRoutePath").setAttribute("d", routePath(projectedStops));
+      $("#activePath").setAttribute("d", segmentPath(projectedStops, activeDay));
+    }
+
+    function renderDayCard() {
+      const day = getDay();
+      const visibleEvents = collapsed ? day.events.filter((event) => event[3]) : day.events;
+      $("#dayCard").innerHTML = `
+        <div class="day-header">
+          <div>
+            <h3>${day.title}</h3>
+            <p class="day-route">${day.route}</p>
+            <div class="day-tags">${day.highlights.map((item) => `<span class="tag">${item}</span>`).join("")}</div>
+          </div>
+          <span class="day-badge">${day.badge}</span>
+        </div>
+        <div class="full-panel">
+          <div class="timeline">
+            ${visibleEvents.map(([time, title, note, highlight]) => `
+              <div class="timeline-row ${highlight ? "highlight" : ""}">
+                <div class="time">${time}</div>
+                <div>
+                  <p class="event-title">${title}</p>
+                  <p class="event-note">${note}</p>
+                </div>
+              </div>
+            `).join("")}
+          </div>
+          <div class="collapse-actions">
+            <button type="button" class="text-button" data-collapse>${collapsed ? "显示完整时间表" : "只看重点事项"}</button>
+          </div>
+        </div>
+        <div class="driving-panel">
+          <div class="drive-kpis">
+            <div class="drive-kpi"><b>${day.distance}</b><span>今日里程</span></div>
+            <div class="drive-kpi"><b>${day.drive}</b><span>驾驶时间</span></div>
+            <div class="drive-kpi"><b>${day.stay}</b><span>住宿/归宿</span></div>
+          </div>
+          <div>
+            <p class="event-title">导航途径点</p>
+            <ul class="nav-list">${day.nav.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </div>
+          <div>
+            <p class="event-title">驾驶提醒</p>
+            <ul class="alert-list">${day.alerts.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </div>
+        </div>
+      `;
+      $("[data-collapse]").addEventListener("click", () => {
+        collapsed = !collapsed;
+        renderDayCard();
+      });
+    }
+
+    function renderCosts() {
+      const total = costs.reduce((sum, item) => sum + item[budgetMode === "low" ? 1 : 2], 0);
+      $("#costList").innerHTML = costs.map(([name, low, high, note]) => {
+        const value = budgetMode === "low" ? low : high;
+        return `
+          <div class="cost-row">
+            <div><strong>${name}</strong><br><small>${note}</small></div>
+            <strong>¥${value.toLocaleString("zh-CN")}</strong>
+          </div>
+        `;
+      }).join("") + `
+        <div class="cost-row">
+          <div><strong>合计</strong><br><small>不含购物，人均约 ¥1,700-2,300</small></div>
+          <strong>¥${total.toLocaleString("zh-CN")}</strong>
+        </div>
+      `;
+    }
+
+    function renderStays() {
+      $("#stayList").innerHTML = stays.map(([date, name, price]) => `
+        <div class="stay-row">
+          <div><strong>${date}</strong><br>${name}</div>
+          <strong>${price}</strong>
+        </div>
+      `).join("");
+    }
+
+    function renderPacking() {
+      const saved = JSON.parse(localStorage.getItem("zhexinanPacking") || "{}");
+      $("#packingList").innerHTML = packingList.map((item, index) => `
+        <label class="pack-item ${saved[index] ? "done" : ""}">
+          <input type="checkbox" data-pack="${index}" ${saved[index] ? "checked" : ""}>
+          <span>${item}</span>
+        </label>
+      `).join("");
+      $$("[data-pack]").forEach((input) => {
+        input.addEventListener("change", () => {
+          const state = JSON.parse(localStorage.getItem("zhexinanPacking") || "{}");
+          state[input.dataset.pack] = input.checked;
+          localStorage.setItem("zhexinanPacking", JSON.stringify(state));
+          input.closest(".pack-item").classList.toggle("done", input.checked);
+        });
+      });
+    }
+
+    function renderTips() {
+      $("#tipsGrid").innerHTML = tips.map(([title, body]) => `
+        <article class="tip"><b>${title}</b><span>${body}</span></article>
+      `).join("");
+    }
+
+    function setActiveDay(dayId) {
+      activeDay = dayId;
+      collapsed = false;
+      renderRouteStops();
+      renderTabs();
+      renderActiveSummary();
+      renderDayCard();
+    }
+
+    function setMode(mode) {
+      document.body.classList.toggle("drive-mode", mode === "drive");
+      $$("[data-mode]").forEach((button) => button.classList.toggle("active", button.dataset.mode === mode));
+    }
+
+    function bindInteractions() {
+      $$("[data-mode]").forEach((button) => {
+        button.addEventListener("click", () => setMode(button.dataset.mode));
+      });
+      $("[data-mode-toggle]").addEventListener("click", () => {
+        const nextMode = document.body.classList.contains("drive-mode") ? "overview" : "drive";
+        setMode(nextMode);
+        $("#route").scrollIntoView({ behavior: "smooth" });
+      });
+      $$("[data-budget]").forEach((button) => {
+        button.addEventListener("click", () => {
+          budgetMode = button.dataset.budget;
+          $$("[data-budget]").forEach((item) => item.classList.toggle("active", item === button));
+          renderCosts();
+        });
+      });
+      const bottomLinks = $$(".bottom-nav a");
+      bottomLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          bottomLinks.forEach((item) => item.classList.toggle("active", item === link));
+        });
+      });
+    }
+
+    renderStats();
+    renderRouteStops();
+    renderTabs();
+    renderActiveSummary();
+    renderDayCard();
+    renderCosts();
+    renderStays();
+    renderPacking();
+    renderTips();
+    bindInteractions();
+  </script>
+</body>
+</html>
